@@ -28,6 +28,8 @@
 
 - name: Include user and group settings
   import_tasks: user_group.yml
+  when:
+    - not (consul_install_from_repo | bool)
 
 - name: Install OS packages and consul - from the repository
   include_tasks: install_linux_repo.yml
